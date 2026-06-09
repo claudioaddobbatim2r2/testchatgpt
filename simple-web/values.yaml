@@ -1,0 +1,27 @@
+replicaCount: 1
+
+image:
+  repository: nginx
+  tag: latest
+
+service:
+  type: ClusterIP
+  port: 80
+
+config:
+  ENV: dev
+  OWNER: tuo-nome
+
+secret:
+  API_KEY: super-secret-key
+
+probes:
+  readiness:
+    path: /
+    initialDelaySeconds: 5
+    periodSeconds: 10
+
+  liveness:
+    path: /
+    initialDelaySeconds: 10
+    periodSeconds: 20

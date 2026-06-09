@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name -web
+  namespace: simple-web
+
+spec:
+  replicas: {{ .Values.ReplicaCount }}
+
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-web
+
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-web
+
+    spec:
+      containers:
+        - name: {{ .Values.image.repository }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+
+          env:
+            - name: ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: simple-web-config
+                  key: ENV
+
+            - name: OWNER
+              valueFrom:
+                configMapKeyRef:
+                  name: simple-web-config
+                  key: OWNER
+
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: secret-web-simple
+                  key: API_KEY
+
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.probes.readiness.path }}
+              port: 80
+            initialDelaySeconds: {{ .Values.probes.readiness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.probes.readiness.periodSeconds }}
+
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.probes.liveness.path }}
+              port: 80
+            initialDelaySeconds: {{ .Values.probes.liveness.initialDelaySeconds }}

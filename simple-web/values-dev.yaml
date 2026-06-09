@@ -1,0 +1,5 @@
+replicaCount: 1
+
+config:
+  ENV: dev
+  OWNER: dev-team
