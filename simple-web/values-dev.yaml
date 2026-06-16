@@ -1,5 +1,27 @@
 replicaCount: 1
 
+image:
+  repository: nginx
+  tag: latest
+
+service:
+  type: ClusterIP
+  port: 80
+
 config:
   ENV: dev
   OWNER: dev-team
+
+secret:
+  API_KEY: dev-secret-key
+
+probes:
+  readiness:
+    path: /
+    initialDelaySeconds: 5
+    periodSeconds: 10
+
+  liveness:
+    path: /
+    initialDelaySeconds: 10
+    periodSeconds: 20

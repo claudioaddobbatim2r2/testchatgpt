@@ -1,8 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name -web
-  namespace: simple-web
+  name: {{ .Release.Name }}-web
 
 spec:
   replicas: {{ .Values.ReplicaCount }}

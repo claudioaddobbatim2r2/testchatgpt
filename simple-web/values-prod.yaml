@@ -1,0 +1,16 @@
+replicaCount: 3
+
+image:
+  repository: nginx
+  tag: latest
+
+service:
+  type: ClusterIP
+  port: 80
+
+config:
+  ENV: prod
+  OWNER: platform-team
+
+secret:
+  API_KEY: prod-secret-key
