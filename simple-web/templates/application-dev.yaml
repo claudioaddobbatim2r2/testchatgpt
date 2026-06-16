@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: simple-web-dev
-  namespace: argocd
+  namespace: simple-web-dev
 spec:
   project: default
 
