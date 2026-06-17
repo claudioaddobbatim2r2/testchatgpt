@@ -5,4 +5,5 @@ metadata:
 data:
   ENV: {{ .Values.config.ENV }}
   OWNER: {{ .Values.config.OWNER }}
-
+  index.html: |
+{{ .Values.html.index | indent 4 }}

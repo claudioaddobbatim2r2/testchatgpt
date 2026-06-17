@@ -25,3 +25,12 @@ probes:
     path: /
     initialDelaySeconds: 10
     periodSeconds: 20
+
+html:
+  index: |
+    <html>
+      <body>
+        <h1>Simple Web DEV</h1>
+        <p>Deploy gestito da Helm e ArgoCD</p>
+      </body>
+    </html>
