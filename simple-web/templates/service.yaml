@@ -5,6 +5,6 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   selector:
-    app: {{ .Values.image.Repository }}
+    app: {{ .Release.Name }}-web
   ports:
     - port: {{ .Values.service.port }}
