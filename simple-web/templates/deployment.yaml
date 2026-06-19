@@ -60,4 +60,4 @@ spec:
       volumes:
         - name: html-volume
           configMap:
-            name: {{ .Release.Name }}-html
+            name: {{ .Release.Name }}-config
