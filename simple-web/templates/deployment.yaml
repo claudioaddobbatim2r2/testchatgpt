@@ -24,19 +24,19 @@ spec:
             - name: ENV
               valueFrom:
                 configMapKeyRef:
-                  name: simple-web-config
+                  name: {{ .Release.Name }}-config
                   key: ENV
 
             - name: OWNER
               valueFrom:
                 configMapKeyRef:
-                  name: simple-web-config
+                  name: {{ .Release.Name }}-config
                   key: OWNER
 
             - name: API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: secret-web-simple
+                  name: {{ .Release.Name }}-config
                   key: API_KEY
 
           readinessProbe:
