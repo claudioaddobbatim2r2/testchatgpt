@@ -1,4 +1,4 @@
-ReplicaCount: 1
+replicaCount: 1
 
 image:
   repository: nginx
@@ -34,3 +34,11 @@ html:
         <p>Deploy gestito da Helm e ArgoCD</p>
       </body>
     </html>
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 100m
+    memory: 128Mi

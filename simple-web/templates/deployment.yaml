@@ -4,7 +4,7 @@ metadata:
   name: {{ .Release.Name }}-web
 
 spec:
-  replicas: {{ .Values.ReplicaCount }}
+  replicas: {{ .Values.replicaCount }}
 
   selector:
     matchLabels:
@@ -19,6 +19,17 @@ spec:
       containers:
         - name: {{ .Values.image.repository }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+
+          resources:
+            requests:
+              cpu: {{ .Values.resources.requests.cpu | quote }}
+              memory: {{ .Values.resources.requests.memory | quote }}
+            limits:
+              cpu: {{ .Values.resources.limits.cpu | quote }}
+              memory: {{ .Values.resources.limits.memory | quote }}
+
+          ports:
+            - containerPort: 80
 
           env:
             - name: ENV
