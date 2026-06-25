@@ -14,6 +14,7 @@ config:
   OWNER: dev-team
 
 secret:
+  enabled: true  
   API_KEY: dev-secret-key
 
 probes:
@@ -54,3 +55,7 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 5
   targetCPUUtilizationPercentage: 70
+
+serviceAccount:
+  create: true
+  name: ""
