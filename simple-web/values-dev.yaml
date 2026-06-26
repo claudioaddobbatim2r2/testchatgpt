@@ -46,7 +46,7 @@ resources:
     memory: 128Mi
 
 ingress:
-  enabled: true
+  enabled: false
   host: simple-web.local
   path: /
 
